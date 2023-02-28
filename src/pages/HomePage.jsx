@@ -6,7 +6,7 @@ function HomePage() {
   const [projectList, setProjectList] = useState([])
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}projects`)
+    fetch(`${import.meta.env.VITE_API_URL}events`)
       .then((results) => {
         return results.json()
       })

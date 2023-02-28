@@ -1,6 +1,6 @@
 import React from "react"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
-import Nav from "./components/Nav"
+import Nav from "./components/Nav/nav"
 import Home from "./pages/HomePage"
 import Project from "./pages/ProjectPage"
 import LoginPage from "./pages/LoginPage"
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/project/:id",
+        path: "/event/:id",
         element: <Project />,
       },
       {
