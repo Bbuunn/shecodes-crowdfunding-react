@@ -1,30 +1,28 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-function LoginForm() {
-  const [credentials, setCredentials] = useState({
+function CreateAccountForm() {
+  const [FormData, setFormData] = useState({
     username: "",
+    email: "",
     password: "",
   })
-  
+
   const navigate = useNavigate()
-  
-  const handleChange = () => {
-      const { id, value } = event.target
-      setCredentials((prevCredentials) => ({
-          ...prevCredentials,
-          [id]: value,
-        }))
-    }
-    //   console.log(credentials)
+
+  const handleChange = (event) => {
+    const { id, value } = event.target
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [id]: value,
+    }))
+  }
+  //   console.log(credentials)
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (credentials.username && credentials.password) {
-      postData().then((response) => {
-        window.localStorage.setItem("token", response.token)
-        navigate("/")
-      })
-    }
+    postData().then((response) => {
+      navigate(`/login`)
+    })
   }
 
   const postData = async () => {

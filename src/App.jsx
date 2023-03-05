@@ -4,6 +4,7 @@ import Nav from "./components/Nav/nav"
 import Home from "./pages/HomePage"
 import Project from "./pages/ProjectPage"
 import LoginPage from "./pages/LoginPage"
+import CreateAccountPage from "./pages/CreateAccountPage"
 
 const HeaderLayout = () => {
   return (
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/createaccount",
+        element: <CreateAccountPage />,
       },
     ],
   },
