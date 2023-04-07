@@ -29,7 +29,7 @@ function Nav() {
   )
 
   return (
-    <nav className="navbar bg-base-100">
+    <nav className="navbar bg-base-100 mb-8">
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl">2gather</a>
       </div>
@@ -39,7 +39,8 @@ function Nav() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/create-event">Create Event</NavLink> // TODO: Prompt users to create account if not logged in
+            <NavLink to="/create-event">Create Event</NavLink>{" "}
+            {/* TODO: Prompt users to create account if not logged in */}
           </li>
           {loginLinks}
         </ul>
