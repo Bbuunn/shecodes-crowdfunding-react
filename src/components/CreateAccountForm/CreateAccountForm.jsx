@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 function CreateAccountForm() {
-  const [FormData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     username: "",
-    email: "",
+    // email: "",
     password: "",
   })
 
@@ -17,7 +17,7 @@ function CreateAccountForm() {
       [id]: value,
     }))
   }
-  //   console.log(credentials)
+
   const handleSubmit = (event) => {
     event.preventDefault()
     postData().then((response) => {
@@ -27,12 +27,12 @@ function CreateAccountForm() {
 
   const postData = async () => {
     const response = await // fetch that does post
-    fetch(`${import.meta.env.VITE_API_URL}api-token-auth/`, {
+    fetch(`${import.meta.env.VITE_API_URL}users/`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(formData),
     })
     return response.json()
   }
@@ -65,4 +65,4 @@ function CreateAccountForm() {
   )
 }
 
-export default LoginForm
+export default CreateAccountForm
