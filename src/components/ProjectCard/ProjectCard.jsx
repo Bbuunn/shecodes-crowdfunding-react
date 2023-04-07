@@ -10,8 +10,8 @@ function ProjectCard({ data }) {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <Link to={`/project/${id}`}>
-        <figure>
-          <img src={image} alt={title} />
+        <figure className="h-[300px] rounded-t-2xl">
+          <img className="w-full object-cover" src={image} alt={title} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
