@@ -1,47 +1,49 @@
 // index.jsx name equivalent to nav.jsx
 import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import "./nav.css/"
 
 function Nav() {
-  const ShowLoginButton = window.localStorage.getItem("token") == null
+  const loggedIn = window.localStorage.getItem("token") == null
   const navigate = useNavigate()
+
   const onLogOut = (event) => {
     event.preventDefault()
     localStorage.clear()
     navigate("/")
   }
-  let loginStuff
-  if (ShowLoginButton) {
-    loginStuff = (
-      <div>
-        <div>
-          <Link to="/login">Login</Link>
-          <button>
-            <Link to="/createaccount">Create an account</Link>
-          </button>
-        </div>
-      </div>
-    )
-  } else {
-    loginStuff = (
-      <div>
-        <div>you're logged in</div>
-        <div>
-          <button onClick={onLogOut}>Log Out</button>
-        </div>
-      </div>
-    )
-  }
-  console.log(loginStuff)
+
+  let loginLinks = loggedIn ? (
+    <>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/createaccount">Create an account</NavLink>
+      </li>
+    </>
+  ) : (
+    <li>
+      <button onClick={onLogOut}>Log Out</button>
+    </li>
+  )
 
   return (
-    <nav>
-      <div className="navbar">
-        <Link to="/">Home</Link>
-        {loginStuff}
+    <nav className="navbar bg-base-100">
+      <div className="flex-1">
+        <a className="btn btn-ghost normal-case text-xl">2gather</a>
       </div>
-      {/* <Link to="/project">Project</Link> */}
+      <div className="flex-none">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/create-event">Create Event</NavLink> // TODO: Prompt users to create account if not logged in
+          </li>
+          {loginLinks}
+        </ul>
+      </div>
     </nav>
   )
 }
