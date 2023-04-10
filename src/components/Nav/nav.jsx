@@ -31,10 +31,14 @@ function Nav() {
   return (
     <nav className="navbar bg-base-100 mb-8">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">2gather</a>
+        <NavLink to="/">
+          <span className="btn btn-ghost normal-case text-3xl font-bold">
+            2gather
+          </span>
+        </NavLink>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-2">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
