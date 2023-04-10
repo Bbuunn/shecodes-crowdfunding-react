@@ -1,6 +1,7 @@
 // index.jsx name equivalent to nav.jsx
 import React from "react"
 import { NavLink, useNavigate } from "react-router-dom"
+import logo from "../../assets/2gather_logo.png"
 import "./nav.css/"
 
 function Nav() {
@@ -19,7 +20,7 @@ function Nav() {
         <NavLink to="/login">Login</NavLink>
       </li>
       <li>
-        <NavLink to="/createaccount">Create an account</NavLink>
+        <NavLink to="/create-account">Create an account</NavLink>
       </li>
     </>
   ) : (
@@ -32,9 +33,11 @@ function Nav() {
     <nav className="navbar bg-base-100 mb-8">
       <div className="flex-1">
         <NavLink to="/">
-          <span className="btn btn-ghost normal-case text-3xl font-bold">
-            2gather
-          </span>
+          <img
+            src={logo}
+            alt="2gather logo"
+            className="max-h-[75px] object-cover object-center"
+          />
         </NavLink>
       </div>
       <div className="flex-none">
