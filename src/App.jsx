@@ -5,6 +5,7 @@ import Home from "./pages/HomePage"
 import Project from "./pages/ProjectPage"
 import LoginPage from "./pages/LoginPage"
 import CreateAccountPage from "./pages/CreateAccountPage"
+import CreateEventPage from "./pages/CreateEventPage"
 
 const HeaderLayout = () => {
   return (
@@ -32,8 +33,12 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path: "/createaccount",
+        path: "/create-account",
         element: <CreateAccountPage />,
+      },
+      {
+        path: "/create-event",
+        element: <CreateEventPage />,
       },
     ],
   },
