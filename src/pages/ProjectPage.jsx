@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 function ProjectPage() {
-  const [projectData, setProjectData] = useState({ attendees: [] })
+  const [projectData, setProjectData] = useState({ attendances: [] })
   const { id } = useParams()
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}events/${id}`) // get json
@@ -14,7 +14,7 @@ function ProjectPage() {
       })
   }, [])
   console.log(projectData)
-  console.log(projectData.attendees)
+  console.log(projectData.attendances)
   return (
     //fix: make sure .properties are in my insomnia
     <div>
@@ -23,7 +23,7 @@ function ProjectPage() {
       <h3>{`Status: ${projectData.is_open}`}</h3>
       <h3>Attendees:</h3>
       <ul>
-        {projectData.attendees.map((attendeeData, key) => {
+        {projectData.attendances.map((attendeeData, key) => {
           return <li>{attendeeData.amount}</li> // L.I. element
         })}
       </ul>
