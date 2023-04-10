@@ -16,7 +16,7 @@ function LoginForm() {
       [id]: value,
     }))
   }
-  //   console.log(credentials)
+
   const handleSubmit = (event) => {
     event.preventDefault()
     if (credentials.username && credentials.password) {
@@ -40,30 +40,49 @@ function LoginForm() {
   }
 
   return (
-    <form>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          id="username"
-          placeholder="Enter username"
-        ></input>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content">
+        <div className="card w-full shadow-2xl bg-base-100">
+          <form className="card-body">
+            <div className="form-control">
+              <label className="label" htmlFor="username">
+                <span className="label-text">Username</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Enter username"
+                className="input input-bordered"
+                id="username"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-control">
+              <label className="label" htmlFor="password">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                onChange={handleChange}
+                type="password"
+                id="password"
+                placeholder="Password"
+                className="input input-bordered"
+              />
+            </div>
+
+            <div className="form-control mt-6">
+              <button
+                className="btn btn-primary"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          onChange={handleChange}
-          type="password"
-          id="password"
-          placeholder="Password"
-        ></input>
-      </div>
-      <button type="submit" onClick={handleSubmit}>
-        Login
-      </button>
-      {/* button within a function - need to specify type, will use for pledge */}
-    </form>
+    </div>
   )
 }
 
