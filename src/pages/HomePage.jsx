@@ -18,7 +18,7 @@ function HomePage() {
   return (
     <>
       <HomePageHero />
-      <div className="p-8">
+      <div className="p-8 flex flex-wrap gap-8">
         {projectList.map((projectData, key) => {
           return <ProjectCard key={key} data={projectData} />
         })}
