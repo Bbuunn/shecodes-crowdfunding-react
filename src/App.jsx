@@ -6,6 +6,7 @@ import Project from "./pages/ProjectPage"
 import LoginPage from "./pages/LoginPage"
 import CreateAccountPage from "./pages/CreateAccountPage"
 import CreateEventPage from "./pages/CreateEventPage"
+import NotFoundPage from "./pages/NotFoundPage"
 
 const HeaderLayout = () => {
   return (
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/create-event",
         element: <CreateEventPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },
