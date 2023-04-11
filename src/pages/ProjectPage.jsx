@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 
 function formatDate(isoDate) {
   const months = [
@@ -54,6 +54,26 @@ function ProjectPage() {
   } = projectData
   const { id } = useParams()
   const navigate = useNavigate()
+  const token = window.localStorage.getItem("token")
+  const userId = window.localStorage.getItem("user_id")
+  const isOwner = token && userId === String(owner)
+
+  function handleDelete() {
+    fetch(`${import.meta.env.VITE_API_URL}events/${id}`, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `token ${token}`,
+      },
+    })
+      .then((results) => {
+        if (!results.ok) throw Error(results.json())
+        navigate("/")
+      })
+      .catch((error) => {
+        navigate("/not-found")
+      })
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}events/${id}`) // get json
@@ -66,7 +86,6 @@ function ProjectPage() {
           error.status = 404
           throw error
         }
-
         setProjectData(data) // json
       })
       .catch((error) => {
@@ -95,6 +114,20 @@ function ProjectPage() {
         alt="hero image"
       />
       <div className="py-16 px-[20%]">
+        {isOwner && (
+          <div className="flex justify-end gap-4 mb-4">
+            <Link to={`/event/${id}/edit`} state={{ projectData }}>
+              <button className="btn btn-outline min-h-[2rem] h-8">Edit</button>
+            </Link>
+            <button
+              className="btn btn-outline min-h-[2rem] h-8"
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
+        )}
+
         <h1 className="text-6xl font-bold mb-4">{title}</h1>
         <p className="uppercase text-primary mb-4 text-sm">
           Created on {formatDate(created_at)} | Location: {location}

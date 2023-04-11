@@ -6,6 +6,7 @@ import Project from "./pages/ProjectPage"
 import LoginPage from "./pages/LoginPage"
 import CreateAccountPage from "./pages/CreateAccountPage"
 import CreateEventPage from "./pages/CreateEventPage"
+import UpdateEventPage from "./pages/UpdateEventPage"
 import NotFoundPage from "./pages/NotFoundPage"
 
 const HeaderLayout = () => {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/event/:id",
         element: <Project />,
+      },
+      {
+        path: "/event/:eventId/edit",
+        element: <UpdateEventPage />,
       },
       {
         path: "/login",

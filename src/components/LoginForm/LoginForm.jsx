@@ -17,11 +17,13 @@ function LoginForm() {
     }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (credentials.username && credentials.password) {
+      const userId = await getUserId()
       postData().then((response) => {
         window.localStorage.setItem("token", response.token)
+        if (userId) window.localStorage.setItem("user_id", userId)
         navigate("/")
       })
     }
@@ -37,6 +39,16 @@ function LoginForm() {
       body: JSON.stringify(credentials),
     })
     return response.json()
+  }
+
+  const getUserId = async () => {
+    const data = await fetch(`${import.meta.env.VITE_API_URL}users/`)
+    const allUsers = await data.json()
+    const loggedInUser = allUsers.find(
+      (user) => user.username === credentials.username
+    )
+
+    return loggedInUser.id
   }
 
   return (

@@ -1,18 +1,12 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useParams, useNavigate, useLocation } from "react-router-dom"
 import EventForm from "../EventForm"
 
-function CreateEventForm() {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    image: "",
-    online: false,
-    location: "",
-    min_attendees: 1,
-    max_attendees: 10,
-  })
+function UpdateEventForm() {
+  const { state } = useLocation()
+  const [formData, setFormData] = useState(state.projectData)
 
+  const { eventId } = useParams()
   const navigate = useNavigate()
 
   const handleChange = (event) => {
@@ -26,16 +20,16 @@ function CreateEventForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    postData().then((response) => {
+    putData().then((response) => {
       navigate(`/event/${response.id}`)
     })
   }
 
-  const postData = async () => {
+  const putData = async () => {
     const token = window.localStorage.getItem("token")
     const response = await // fetch that does post
-    fetch(`${import.meta.env.VITE_API_URL}events/`, {
-      method: "post",
+    fetch(`${import.meta.env.VITE_API_URL}events/${eventId}`, {
+      method: "put",
       headers: {
         "Content-Type": "application/json",
         Authorization: `token ${token}`,
@@ -50,9 +44,9 @@ function CreateEventForm() {
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       formData={formData}
-      buttonText="Create Event"
+      buttonText="Update Event"
     />
   )
 }
 
-export default CreateEventForm
+export default UpdateEventForm
