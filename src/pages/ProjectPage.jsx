@@ -108,11 +108,16 @@ function ProjectPage() {
   return (
     //fix: make sure .properties are in my insomnia
     <div>
-      <img
-        className="hero h-[60vh] object-cover"
-        src={image}
-        alt="hero image"
-      />
+      <div className="relative">
+        <img
+          className="hero h-[60vh] object-cover"
+          src={image}
+          alt="hero image"
+        />
+        <button className="btn btn-primary absolute bottom-8 right-8">
+          Attend
+        </button>
+      </div>
       <div className="py-16 px-[20%]">
         {isOwner && (
           <div className="flex justify-end gap-4 mb-4">
