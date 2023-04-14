@@ -120,7 +120,7 @@ GitHub: [https://github.com/Bbuunn/](https://github.com/Bbuunn/)
 [contributors-shield]: https://img.shields.io/github/contributors/Bbuunn/shecodes-crowdfunding-react.svg?style=for-the-badge
 [contributors-url]: https://github.com/Bbuunn/shecodes-crowdfunding-react/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/Bbuunn/shecodes-crowdfunding-react.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[license-url]: https://github.com/Bbuunn/shecodes-crowdfunding-react/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/bunnyryou/
 [product-screenshot]: images/screenshot.png
