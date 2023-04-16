@@ -4,7 +4,7 @@ import EventForm from "../EventForm"
 
 function UpdateEventForm() {
   const { state } = useLocation()
-  const [formData, setFormData] = useState(state.projectData)
+  const [formData, setFormData] = useState(state.eventData)
 
   const { eventId } = useParams()
   const navigate = useNavigate()

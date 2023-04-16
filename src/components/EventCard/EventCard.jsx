@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 // will be rendered on homepage
 // props = object
-function ProjectCard({ data }) {
+function EventCard({ data }) {
   // const { data } = props // ^ Reverted to destructure in the parameter directly
   const { id, image, title, description, is_open, online } = data
 
@@ -26,4 +26,4 @@ function ProjectCard({ data }) {
   )
 }
 
-export default ProjectCard
+export default EventCard

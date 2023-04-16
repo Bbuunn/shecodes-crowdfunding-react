@@ -25,8 +25,8 @@ function formatDate(isoDate) {
   return formattedDate
 }
 
-function ProjectPage() {
-  const [projectData, setProjectData] = useState({
+function EventPage() {
+  const [eventData, setEventData] = useState({
     title: "",
     description: "",
     image: "",
@@ -51,7 +51,7 @@ function ProjectPage() {
     max_attendees,
     owner,
     attendances,
-  } = projectData
+  } = eventData
   const { id } = useParams()
   const navigate = useNavigate()
   const token = window.localStorage.getItem("token")
@@ -86,7 +86,7 @@ function ProjectPage() {
           error.status = 404
           throw error
         }
-        setProjectData(data) // json
+        setEventData(data) // json
       })
       .catch((error) => {
         navigate("/not-found")
@@ -121,7 +121,7 @@ function ProjectPage() {
       <div className="py-16 px-[20%]">
         {isOwner && (
           <div className="flex justify-end gap-4 mb-4">
-            <Link to={`/event/${id}/edit`} state={{ projectData }}>
+            <Link to={`/event/${id}/edit`} state={{ eventData }}>
               <button className="btn btn-outline min-h-[2rem] h-8">Edit</button>
             </Link>
             <button
@@ -172,4 +172,4 @@ function ProjectPage() {
   )
 }
 
-export default ProjectPage
+export default EventPage

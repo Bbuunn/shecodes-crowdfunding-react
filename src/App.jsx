@@ -2,7 +2,7 @@ import React from "react"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import Nav from "./components/Nav/nav"
 import Home from "./pages/HomePage"
-import Project from "./pages/ProjectPage"
+import Event from "./pages/EventPage"
 import LoginPage from "./pages/LoginPage"
 import CreateAccountPage from "./pages/CreateAccountPage"
 import CreateEventPage from "./pages/CreateEventPage"
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/event/:id",
-        element: <Project />,
+        element: <Event />,
       },
       {
         path: "/event/:eventId/edit",

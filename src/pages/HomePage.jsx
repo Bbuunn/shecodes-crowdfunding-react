@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { allProjects } from "../data"
-import ProjectCard from "../components/ProjectCard"
+import EventCard from "../components/EventCard"
 import HomePageHero from "../components/HomePageHero"
 
 function HomePage() {
-  const [projectList, setProjectList] = useState([])
+  const [eventList, setEventList] = useState([])
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}events`)
@@ -12,15 +11,15 @@ function HomePage() {
         return results.json()
       })
       .then((data) => {
-        setProjectList(data)
+        setEventList(data)
       })
   }, []) //comment: run when page first loads
   return (
     <>
       <HomePageHero />
       <div className="p-8 flex flex-wrap gap-8">
-        {projectList.map((projectData, key) => {
-          return <ProjectCard key={key} data={projectData} />
+        {eventList.map((eventData, key) => {
+          return <EventCard key={key} data={eventData} />
         })}
       </div>
     </>
